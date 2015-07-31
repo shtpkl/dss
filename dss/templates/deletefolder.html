@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %} Welcome to Digital Library {% endblock %}
+{% block head %} 
+		{% if user.username %}
+			Welcome <b>{{ user.username }}</b> to Digital Library 
+		{% else %}
+			Welcome to Digital Library 
+		{% endif %}
+{% endblock %}
+{% block content %}
+		{% if user.username %}
+			<form method="post" action=".">
+				{{form.as_p}}
+				<input type = "submit" value="Delete" />
+			</form>
+		{% else %}
+			<p>Welcome anonymous user!
+			You need to <a href="/login/">login</a>
+			before you can store and share Documents.</p>
+		{% endif %}
+{% endblock %}

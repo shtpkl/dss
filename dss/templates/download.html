@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %} Welcome to Digital Library {% endblock %}
+{% block head %} Welcome to Digital Library {% endblock %}
+{% block content %}
+		{% if user.username %}
+			<h1> Welcome {{ user.username }}</h1>
+		        <div id="mainNav">
+			<table id="id_menu"  border="1" colspan="1">
+			 <tr> <td width="15%"> <a href="/create_folder"> Create Folder</a></td>
+			        <td width="15%"><a href="/delete_folder"> DeleteFolder </a></td>
+			       <td width="15%"><a href="/addfile"> Add Files </a></td>
+			       <td width="15%"><a href="/movefile"> Move Files </a></td>
+			       <td width="15%"><a href="/delfile"> Delete Files</a></td>	
+			       <td width="15%"><a href="/listfile"> List Files </a></td>
+			 </td></tr>
+			</table>
+			</div>
+			<tr>
+				<form method="post" action="." enctype="multipart/form-data">
+					{{form.as_p}}
+					<input type = "submit" value="Download" />
+				</form>
+			</tr>
+		{% else %}
+			<p>Welcome anonymous user!
+			You need to <a href="/login/">login</a>
+			before you can store and share Documents.</p>
+		{% endif %}
+{% endblock %}

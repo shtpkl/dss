@@ -1,0 +1,10 @@
+#nav {
+	float: right;
+}
+input {
+	display: block;
+}
+mainNav {
+	height: 35px;
+	position: relative;
+}

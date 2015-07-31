@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+var delButton ='#delButton'; 
+$(delButton).click(function() {
+window.location.href ='/addfile';
+}
+{% block title %} Docuemnt Management {% endblock %}
+{% block head %} Document Management for {{ user.username }} {% endblock %}
+{% block content %}
+<!-- List of uploaded documents -->
+	<h1> List of the Files </h1>
+	<form id="id_df" method="post">
+		<table width="100%">	
+			{% for key, value  in filelist.items %}
+				<tr> <td width="40%"><a href="/media/{{ key }} " > {{ value }}</a></td> 
+				     <input type="hidden" name="forloop.counter0" value="{{ forloop.counter0 }} " />
+				     <td><button id="delButton" value="media/{{ key }}"   name="Delete"> Delete </button></td>
+				</tr>
+			{% endfor %}
+		</table>
+	</form>
+{% endblock %}

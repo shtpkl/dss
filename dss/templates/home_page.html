@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %} Welcome to Digital Library {% endblock %}
+{% block head %} Welcome to Digital Library {% endblock %}
+{% block content %}
+		{% if user.username %}
+			<p> Welcome {{ user.username }}!
+		        <div id="mainNav">
+			  <ul class="mainNav"> <a href="/create_folder"> Create Folder</a>
+			       <li> <a href="/delete_folder"> DeleteFolder </a></li>
+			       <li> Add Files </li>
+			       <li> Move Files </li>
+			       <li> Delete Files</li>	
+			       <li> List Files </li>
+			  </ul>
+			</div>
+			      	Here you can store and share Documents !</p>
+		{% else %}
+			<p>Welcome anonymous user!
+			You need to <a href="/login/">login</a>
+			before you can store and share Documents.</p>
+		{% endif %}
+{% endblock %}

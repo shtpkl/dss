@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %} Welcome to Digital Library {% endblock %}
+{% block content %}
+		{% if user.username %}
+			<form method="post" action=".">
+				{{form.as_p}}
+				<input type = "submit" value="Search" />
+			</form>
+			<!-- List of uploaded documents -->
+        		<form id="id_df" method="post">
+                		<table width="100%">
+                        	{% for key, value  in filelist.items %}
+                                	<tr> <td width="40%"><a href="/media/{{ key }}/{{ value }}" > {{ value }}</a></td>
+                                     	<input type="hidden" name="forloop.counter0" value="{{ forloop.counter0 }} " />
+                                     	<td><button id="delButton" value="media/{{ key }}"   name="Delete"> Delete </button></td>
+                                	</tr>
+                        	{% endfor %}
+                		</table>
+        		</form>
+
+		{% else %}
+			<p>Welcome anonymous user!
+			You need to <a href="/login/">login</a>
+			before you can store and share Documents.</p>
+		{% endif %}
+{% endblock %}

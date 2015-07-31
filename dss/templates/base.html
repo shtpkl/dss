@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN "
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+	<head>
+		<title> Digital Library | {% block title %} {% endblock %} </title>
+		<link rel="stylesheet" href="/site_media/style.css" type="text/css" />
+	</head>
+	<body>
+		<div id="nav">
+			<a href="/">home</a> | 
+			{% if user.is_authenticated %}
+				Welcome {{ user.username }} (<a href="/logout/"> logout</a> )
+			{% else %}
+				<a href="/login/">login</a> | <a href="/register/">register</a>
+			{% endif %}
+		</div>
+		<h1> {% block head %}  Welcome {{ user.username }} to the Digital Library {% endblock %} </h1>
+		{% if user.is_authenticated %}
+			<div id="mainNav" > 
+			 	<table id="id_menu"  border="1" colspan="1">
+                         		<tr> <td width="20%"> <a href="/createfolder"> Create Folder</a></td>
+                               		<td width="20%"><a href="/movefolder"> Move Folder  </a></td>
+                               		<td width="20%"><a href="/deletefolder"> DeleteFolder </a></td>
+                               		<td width="20%"><a href="/addfile"> Add Files </a></td>
+                               		<!--td width="15%"><a href="/delfile"> Delete Files</a></td-->
+                               		<td width="20%"><a href="/listfiles"> List Files </a></td> </tr>
+                        	</table>
+                        </div>
+		{% endif %}
+		<table> {% block content %} {% endblock %} </table>
+	</body>
+</html>
